@@ -1,4 +1,4 @@
-questions = [
+[
     {
         "question": "Welcher Datentyp ist 5.0?",
         "options": ["int", "float", "str", "bool"],

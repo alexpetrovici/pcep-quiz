@@ -1,10 +1,10 @@
-from questions import questions
+from questions_loader import load_questions
 import quiz_engine
 import random
 import stats
 
 
-def get_categories() -> list[str]:
+def get_categories(questions: list[dict]) -> list[str]:
     categories = []
 
     for question in questions:
@@ -16,7 +16,7 @@ def get_categories() -> list[str]:
     return categories
 
 
-def get_difficulties() -> list[int]:
+def get_difficulties(questions: list[dict]) -> list[int]:
     difficulties = []
 
     for question in questions:
@@ -28,8 +28,8 @@ def get_difficulties() -> list[int]:
     return difficulties
 
 
-def choose_category() -> list[dict]:
-    categories = get_categories()
+def choose_category(questions: list[dict]) -> list[dict]:
+    categories = get_categories(questions)
 
     print("\n=== Kategorien ===")
 
@@ -42,7 +42,11 @@ def choose_category() -> list[dict]:
         if 1 <= choice <= len(categories):
             selected_category = categories[choice - 1]
 
-            return [ question for question in questions if question["category"] == selected_category ]
+            return [
+                question
+                for question in questions
+                if question["category"] == selected_category
+            ]
 
         print("Ungültige Kategorie!")
 
@@ -52,8 +56,8 @@ def choose_category() -> list[dict]:
     return []
 
 
-def choose_difficulty() -> list[dict]:
-    difficulties = get_difficulties()
+def choose_difficulty(questions: list[dict]) -> list[dict]:
+    difficulties = get_difficulties(questions)
 
     print("\n=== Schwierigkeit ===")
 
@@ -72,8 +76,11 @@ def choose_difficulty() -> list[dict]:
     try:
         choice = int(input("\nSchwierigkeit wählen: "))
 
-
-        return [ question for question in questions if question["difficulty"] == choice ]
+        return [
+            question
+            for question in questions
+            if question["difficulty"] == choice
+        ]
 
     except ValueError:
         print("Bitte eine Zahl eingeben!")
@@ -95,6 +102,7 @@ def start_quiz(quiz_questions: list[dict], all_results: list[dict]) -> None:
 
 
 def main() -> None:
+    questions = load_questions("questions.json")
     all_results: list[dict] = []
 
     print("=" * 40)
@@ -115,11 +123,11 @@ def main() -> None:
             start_quiz(questions, all_results)
 
         elif choice == "2":
-            category_questions = choose_category()
+            category_questions = choose_category(questions)
             start_quiz(category_questions, all_results)
 
         elif choice == "3":
-            difficulty_questions = choose_difficulty()
+            difficulty_questions = choose_difficulty(questions)
             start_quiz(difficulty_questions, all_results)
 
         elif choice == "4":
