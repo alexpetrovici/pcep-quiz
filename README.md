@@ -15,7 +15,8 @@ Das Ziel des Projekts ist es, ein funktionales Quiz-Programm zu entwickeln, das 
 ## Features
 
 - Zufällige Fragen
-- Fragen-Datenbank in `questions.py`
+- Fragen-Datenbank in `questions.json`
+- Fragen aus JSON-Datei laden
 - Antwortvalidierung mit `try/except`
 - Punkte-System
 - Erklärung nach jeder Frage
@@ -26,6 +27,7 @@ Das Ziel des Projekts ist es, ein funktionales Quiz-Programm zu entwickeln, das 
 - Menü-Steuerung
 - Saubere Aufteilung in mehrere Dateien
 - Unicode-Symbole (✓ ✗)
+- Über 50 Quizfragen
 
 ---
 
@@ -33,12 +35,13 @@ Das Ziel des Projekts ist es, ein funktionales Quiz-Programm zu entwickeln, das 
 
 ```text
 pcep-quiz/
-├── main.py              # Hauptprogramm mit Menü-Loop
-├── quiz_engine.py       # Kernfunktionen des Quiz
-├── questions.py         # Fragen-Datenbank
-├── stats.py             # Statistik und Highscore
-├── README.md            # Dokumentation
-└── .gitignore           # Optional
+├── main.py
+├── quiz_engine.py
+├── stats.py
+├── questions.json
+├── questions_loader.py
+├── README.md
+└── .gitignore
 ```
 
 ---
@@ -78,6 +81,7 @@ python main.py
 | random.sample() | Zufällige Auswahl von Fragen |
 | Imports | Aufteilung auf mehrere Dateien |
 | f-Strings | Formatierte Ausgabe |
+| JSON | Fragen aus Datei laden |
 
 ---
 
@@ -121,9 +125,9 @@ Aufgaben von `quiz_engine.py`:
 
 ---
 
-### questions.py
+### questions.json
 
-Enthält alle Quizfragen als Liste von Dictionaries.
+Enthält alle Quizfragen im JSON-Format.
 
 Jede Frage enthält:
 
@@ -133,6 +137,12 @@ Jede Frage enthält:
 - `explanation`
 - `category`
 - `difficulty`
+
+---
+
+### questions_loader.py
+
+Lädt die Fragen aus der JSON-Datei in das Programm.
 
 ---
 
@@ -155,6 +165,7 @@ Aufgaben von `stats.py`:
 
 - Alle bisherigen Quiz-Ergebnisse anzeigen
 - Besten Score anzeigen
+- Beste und schwächste Kategorie anzeigen
 
 ---
 
@@ -252,7 +263,7 @@ Beispiele für Kategorien:
 - Schwierigkeits-Filter
 - Highscore
 - Beste und schwächste Kategorie
-
+- Fragen aus Datei laden in die Quiz-App einbauen
 ---
 
 ## Autor
