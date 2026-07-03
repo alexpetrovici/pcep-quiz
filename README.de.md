@@ -1,5 +1,7 @@
 # PCEP Quiz
 
+[🇬🇧 English](README.md) · [🇩🇪 Deutsch](README.de.md)
+
 Ein kleines Python-Quiz zur Vorbereitung auf PCEP/PCAP-Grundlagen.
 
 ---
