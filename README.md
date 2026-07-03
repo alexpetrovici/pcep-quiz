@@ -22,7 +22,7 @@ Das Ziel des Projekts ist es, ein funktionales Quiz-Programm zu entwickeln, das 
 - Erklärung nach jeder Frage
 - Kategorie-Filter
 - Schwierigkeits-Filter
-- Statistik und Highscore
+- Session-Statistik und Highscore
 - Beste und schwächste Kategorie
 - Menü-Steuerung
 - Saubere Aufteilung in mehrere Dateien
